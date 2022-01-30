@@ -1,0 +1,25 @@
+.navbar-content{
+    display: flex;
+    padding: 20px;
+    max-height: 100px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar-image-content{
+    margin: 10px;
+}
+
+.navbar-cart-content{
+    height: auto;
+    color: #ff0c18;
+    margin: 10px;
+    font-size: 30px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.navbar-cart-content:hover{
+    color: #444;
+}
