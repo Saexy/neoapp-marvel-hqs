@@ -1,1 +1,0 @@
-# neoapp-marvel-hqs
