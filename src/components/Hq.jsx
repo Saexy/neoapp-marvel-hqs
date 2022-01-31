@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 const Hq = () => {
     return ( 
         <>
         </>
-    );
+    )
 }
  
-export default Hq;
+export default Hq
