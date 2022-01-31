@@ -1,0 +1,16 @@
+.hq-container{
+    padding: 10px;
+    overflow: hidden;
+}
+
+.hq-button{
+    background-color: #ff0c18 !important;
+    border-color: #ff0c18 !important;
+    color: #ffffff !important;
+    transition: all 0.25s ease !important;
+}
+
+.hq-button:hover{
+    background-color: #ad0d15 !important;
+    border-color: #ad0d15 !important;
+}

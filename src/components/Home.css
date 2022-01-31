@@ -2,7 +2,15 @@
     background-color: #ad0d15;
 }
 
-.quadrinhos-container{
+.background-lightgrey{
+    background-color: #c9c9c9;
+}
+
+.hqs-container, .search-container{
     padding: 30px;
     overflow: hidden;
+}
+
+.hqs-texts{
+    padding: 30px;
 }
