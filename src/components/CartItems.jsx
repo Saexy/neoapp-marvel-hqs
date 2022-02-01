@@ -14,7 +14,7 @@ const CartItems = () => {
 
         let description = "This HQ doesn't have a description"
         if(!!dataCartItem.description){
-            description = dataCartItem.description
+            description = dataCartItem.description.replaceAll('<br>', '\n')
         }
 
         return (<CartItem image={dataCartItem.image} title={dataCartItem.title} description={description}/>)
