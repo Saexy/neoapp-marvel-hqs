@@ -23,13 +23,13 @@ const CartItem = ({image, title, description}) => {
     return (
         <>
             <Row>
-                <Col md={12} className='border mt-3 mb-3'>
+                <Col style={{ background: 'grey'}} md={12} className='mt-3 mb-3'>
                     <Row>
                         <Col md={2} className='d-flex justify-content-center align-items-center p-3'>
                             <img src={image} width='100'/>
                         </Col>
                         <Col md={4} className='d-flex justify-content-center align-items-center'>
-                            <h1>{title}</h1>
+                            <h1 className='text-white'>{title}</h1>
                         </Col>
                         <Col md={6} className='d-flex align-items-center justify-content-end'>
                             <BsFillCartDashFill onClick={() => (handleCartItemDeletion(title))} className='icon-remove-cart-item m-3'/>

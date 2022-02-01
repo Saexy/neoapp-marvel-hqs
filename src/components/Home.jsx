@@ -57,13 +57,13 @@ const Home = () => {
                     <Container>
                         <Row class="search-container">
                             <Col md={12} className='d-flex justify-content-center'>
-                                <h3>Digite a HQ desejada:</h3>
+                                <h3 className='text-white'>Digite a HQ desejada:</h3>
                                 <input type="text" name="" id=""/>
                             </Col>
                             <Col md={12}>
                                 <Row className='d-flex justify-content-center mt-2'>
                                     {error &&
-                                        <h1>Erro inesperado ao consumir a API da Marvel!</h1>
+                                        <h1 className='text-white'>Erro inesperado ao consumir a API da Marvel!</h1>
                                     }
                                     {loading &&
                                         <Spinner className="mt-5" animation="border" role="status"/>

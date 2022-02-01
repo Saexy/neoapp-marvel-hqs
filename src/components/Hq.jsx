@@ -34,11 +34,11 @@ const Hq = ({image, title, description}) => {
 
     return ( 
         <>
-        <Card style={{ width: '18rem', margin: '30px' }}>
+        <Card style={{ background: 'grey', width: '18rem', margin: '30px' }}>
             <div className='hq-container'>
                 <Card.Img variant="top" src={image} />
                 <Card.Body>
-                    <Card.Title>{title}</Card.Title>
+                    <Card.Title className='text-white'>{title}</Card.Title>
                     <Button className="hq-button" onClick={() => (handleShow())}>Visualizar</Button>
                 </Card.Body>
             </div>

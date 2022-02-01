@@ -33,7 +33,7 @@ const CartItems = () => {
                 {data.length <= 0 &&
                     <Row>
                         <Col md={12}>
-                            <h1 class="m-5 p-5">Você não tem itens adicionados no carrinho no momento.</h1>
+                            <h1 class="m-5 p-5 text-white">Você não tem itens adicionados no carrinho no momento.</h1>
                         </Col>
                     </Row>
                 }
