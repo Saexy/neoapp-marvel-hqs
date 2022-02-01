@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/neoapp-marvel-hqs/static/css/main.9de8341f.css",
-    "main.js": "/neoapp-marvel-hqs/static/js/main.bd6197da.js",
+    "main.js": "/neoapp-marvel-hqs/static/js/main.63bf4f23.js",
     "static/media/quadrinhos.jpg": "/neoapp-marvel-hqs/static/media/quadrinhos.da948d74dc724986f198.jpg",
     "static/media/background.jpg": "/neoapp-marvel-hqs/static/media/background.1b0b57f7476decaed5f5.jpg",
     "static/media/logo.png": "/neoapp-marvel-hqs/static/media/logo.2debe65c01a9869190c2.png",
     "index.html": "/neoapp-marvel-hqs/index.html",
     "main.9de8341f.css.map": "/neoapp-marvel-hqs/static/css/main.9de8341f.css.map",
-    "main.bd6197da.js.map": "/neoapp-marvel-hqs/static/js/main.bd6197da.js.map"
+    "main.63bf4f23.js.map": "/neoapp-marvel-hqs/static/js/main.63bf4f23.js.map"
   },
   "entrypoints": [
     "static/css/main.9de8341f.css",
-    "static/js/main.bd6197da.js"
+    "static/js/main.63bf4f23.js"
   ]
 }
