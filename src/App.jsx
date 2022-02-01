@@ -14,6 +14,7 @@ const App = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
+    const [inputSearch, setInputSearch] = useState('')
 
     useEffect(()=>{
         loadMarvelAPI()
@@ -74,9 +75,9 @@ const App = () => {
                                         <>
                                            <Col md={12} className='d-flex justify-content-center'>
                                                 <h3 className='text-white'>Digite a HQ desejada:</h3>
-                                                <input type="text" name="" id=""/>
+                                                <input type="text" placeholder="Procure..." onChange={event => {setInputSearch(event.target.value)}}/>
                                             </Col>
-                                            <Hqs data={data}/> 
+                                            <Hqs inputSearch={inputSearch} data={data}/> 
                                         </>
                                     }
                                 </Row>
