@@ -31,13 +31,20 @@ const CartItems = () => {
         navigate(`/`)
     }
 
+    const handleHomeClick = () => {
+        navigate(`/`)
+    }
+
     return (
         <>
             <Container>
                 {data.length <= 0 &&
                     <Row>
-                        <Col md={12}>
-                            <h1 class="m-5 p-5 text-white">Você não tem itens adicionados no carrinho no momento.</h1>
+                        <h1 class="m-5 p-5 text-white">Você não tem itens adicionados ainda no carrinho.</h1>
+                        <Col md={12} className='d-flex justify-content-center align-items-center'>
+                            <Button variant="danger" className='m-3' onClick={() => (handleHomeClick())}>
+                                Ir para a página inicial
+                            </Button>
                         </Col>
                     </Row>
                 }
