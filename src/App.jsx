@@ -17,6 +17,10 @@ const App = () => {
 
     useEffect(()=>{
         loadMarvelAPI()
+        if(!localStorage.getItem("loadcart")){
+            localStorage.setItem("cart", JSON.stringify([]))
+            localStorage.setItem("loadcart", true)
+        }
     },[])
 
     const loadMarvelAPI = () => {

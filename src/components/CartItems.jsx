@@ -17,13 +17,17 @@ const CartItems = () => {
             description = dataCartItem.description.replaceAll('<br>', '\n')
         }
 
-        return (<CartItem image={dataCartItem.image} title={dataCartItem.title} description={description}/>)
+        return (<CartItem id={dataCartItem.id} image={dataCartItem.image} title={dataCartItem.title} description={description}/>)
     })
 
     const handleFinishPurchase = () => {
         const newCart = JSON.stringify([])
         localStorage.setItem("cart", newCart)
 
+        navigate(`/`)
+    }
+
+    const handleContinuePurchase = () => {
         navigate(`/`)
     }
 
@@ -41,7 +45,7 @@ const CartItems = () => {
                     <Row>
                         {listData}
                         <Col md={12} className='mt-3 d-flex justify-content-center align-items-center'>
-                            <Button href='/' variant="primary" className='m-3'>
+                            <Button variant="primary" className='m-3' onClick={() => (handleContinuePurchase())}>
                                 Continuar comprando
                             </Button>
                             <Button variant="success" className='m-3' onClick={() => (handleFinishPurchase())}>

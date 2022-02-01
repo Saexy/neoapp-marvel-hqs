@@ -1,23 +1,27 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Modal, Row, Col } from 'react-bootstrap'
 import { BsFillCartDashFill, BsFillEyeFill } from "react-icons/bs"
 
 import './CartItem.css'
 
-const CartItem = ({image, title, description}) => {
+const CartItem = ({id, image, title, description}) => {
 
     const [show, setShow] = useState(false)
+
+    const navigate = useNavigate()
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
-    const handleCartItemDeletion = (title) => {
+    const handleCartItemDeletion = (id) => {
         const data = JSON.parse(localStorage.getItem("cart"))
-        const newCart = JSON.stringify(data.filter(cartitem => cartitem.title != title))
+        const newCart = JSON.stringify(data.filter(cartitem => cartitem.id != id))
         localStorage.setItem("cart", newCart)
 
-        window.location.reload(false)
+        navigate(`/`)
+        navigate(`/cart`)
     }
 
     return (
@@ -32,7 +36,7 @@ const CartItem = ({image, title, description}) => {
                             <h1 className='text-white'>{title}</h1>
                         </Col>
                         <Col md={6} className='d-flex align-items-center justify-content-end'>
-                            <BsFillCartDashFill onClick={() => (handleCartItemDeletion(title))} className='icon-remove-cart-item m-3'/>
+                            <BsFillCartDashFill onClick={() => (handleCartItemDeletion(id))} className='icon-remove-cart-item m-3'/>
                             <BsFillEyeFill onClick={() => (handleShow())} className='icon-view-cart-item m-3' />
                         </Col>
                     </Row>

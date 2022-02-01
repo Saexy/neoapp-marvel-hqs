@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import {Card, Button, Modal} from 'react-bootstrap'
+import { v4 as uuidv4 } from 'uuid'
 
 import './Hq.css'
 
@@ -17,9 +18,10 @@ const Hq = ({image, title, description}) => {
     const handleCartItemAddition = (title, description, image) => {
         const data = JSON.parse(localStorage.getItem("cart"))
         const newCart = JSON.stringify([...data, {
-          title: title,
-          description: description,
-          image: image,
+            id: uuidv4(),
+            title: title,
+            description: description,
+            image: image,
         }])
     
         localStorage.setItem("cart", newCart)
