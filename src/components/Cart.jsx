@@ -1,9 +1,15 @@
 import React from 'react'
+import {Container} from 'react-bootstrap'
+
+import CartItems from './CartItems'
 
 const Cart = () => {
+
     return ( 
         <>
-            <h1>Carrinho</h1>
+            <Container>
+                <CartItems />
+            </Container>
         </>
     )
 }

@@ -7,6 +7,7 @@ import './AppNavbar.css'
 import Logo from '../images/logo.png'
 
 const AppNavbar = () => {
+
     return (
         <>
             <Row>

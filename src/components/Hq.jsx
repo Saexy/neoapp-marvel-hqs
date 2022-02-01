@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import {Card, Button, Modal} from 'react-bootstrap'
 
@@ -6,10 +7,30 @@ import './Hq.css'
 
 const Hq = ({image, title, description}) => {
 
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const navigate = useNavigate()
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
+
+    const handleCartItemAddition = (title, description, image) => {
+        const data = JSON.parse(localStorage.getItem("cart"))
+        const newCart = JSON.stringify([...data, {
+          title: title,
+          description: description,
+          image: image,
+        }])
+    
+        localStorage.setItem("cart", newCart)
+    }
+
+    const handleClickAddition = (title, description, image) =>{
+        handleClose()
+        handleCartItemAddition(title, description, image)
+        
+        navigate(`/cart`)
+    }
 
     return ( 
         <>
@@ -32,7 +53,7 @@ const Hq = ({image, title, description}) => {
             <Button variant="danger" onClick={handleClose}>
                 Voltar
             </Button>
-            <Button variant="success" onClick={handleClose}>
+            <Button variant="success" onClick={() => (handleClickAddition(title, description, image))}>
                 Adicionar ao carrinho
             </Button>
             </Modal.Footer>

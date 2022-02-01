@@ -10,6 +10,7 @@ import Cart from './components/Cart'
 import NotFound from './components/NotFound'
 
 const App = () => {
+
   return (
     <>
       <Container>
