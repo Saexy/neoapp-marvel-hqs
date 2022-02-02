@@ -1,3 +1,4 @@
+//Importação dos componentes usados
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Row, Col, Container, Spinner } from 'react-bootstrap'
@@ -11,11 +12,13 @@ import './App.css'
 
 const App = () => {
 
+    //Definição de todos os Hooks
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [inputSearch, setInputSearch] = useState('')
 
+    //Carregando a API da marvel e inicializando o carrinho de compras
     useEffect(()=>{
         loadMarvelAPI()
         if(!localStorage.getItem("loadcart")){
@@ -24,6 +27,7 @@ const App = () => {
         }
     },[])
 
+    //Função de busca de dados da API da marvel
     const loadMarvelAPI = () => {
         setLoading(true)
 
@@ -62,20 +66,23 @@ const App = () => {
             <Row className='mt-5'>
                 <Col md={12}>
                     <Container>
-                        <Row class="search-container">
+                        <Row class='search-container'>
                             <Col md={12}>
                                 <Row className='d-flex justify-content-center mt-2'>
                                     {error &&
+                                        //Mensagem caso dê algum tipo de erro na API da marvel
                                         <h1 className='text-white'>Erro inesperado ao consumir a API da Marvel!</h1>
                                     }
                                     {loading &&
-                                        <Spinner className="mt-5" animation="border" role="status"/>
+                                        //Spinner caso esteja carregando
+                                        <Spinner className='mt-5' animation='border' role='status'/>
                                     }
                                     {!loading &&
+                                        //Caso não esteja mais carregando, exibe o componente Hqs com base no filtro digitado pelo usuário
                                         <>
                                             <Col md={12} className='d-flex justify-content-center'>
                                                 <h3 className='text-white'>Digite a HQ desejada:</h3>
-                                                <input type="text" placeholder="Procure..." onChange={event => {setInputSearch(event.target.value)}}/>
+                                                <input type='text' placeholder='Procure...' onChange={event => {setInputSearch(event.target.value)}}/>
                                             </Col>
                                             <Hqs inputSearch={inputSearch} data={data}/> 
                                         </>

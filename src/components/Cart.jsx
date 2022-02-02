@@ -1,3 +1,4 @@
+//Importação dos componentes usados
 import React from 'react'
 import {Container} from 'react-bootstrap'
 import { v4 as uuidv4 } from 'uuid'
@@ -7,6 +8,7 @@ import CartItems from './CartItems'
 
 const Cart = () => {
 
+    //Criação de um array com cupons(objetos) com seus atributos
     const discountCoupons = [
         {
             id: uuidv4(),
@@ -25,6 +27,7 @@ const Cart = () => {
     return ( 
         <Container>
             <AppNavbar />
+            {/* Chamando o componente CarItems e passando todos os cupons de disconto nas props */}
             <CartItems discountCoupons={discountCoupons}/>
         </Container>
     )

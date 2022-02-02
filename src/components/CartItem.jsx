@@ -1,3 +1,4 @@
+//Importação dos componentes usados
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -8,13 +9,15 @@ import './CartItem.css'
 
 const CartItem = ({id, image, title, description, price, rarity}) => {
 
+    //Definição de todos os Hooks
     const [show, setShow] = useState(false)
-
     const navigate = useNavigate()
 
+    //Funções para deixar o Modal ativo e desativo
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
+    //Função para deletar um item do carrinho
     const handleCartItemDeletion = (id) => {
         const data = JSON.parse(localStorage.getItem("cart"))
         const newCart = JSON.stringify(data.filter(cartitem => cartitem.id != id))
@@ -39,7 +42,8 @@ const CartItem = ({id, image, title, description, price, rarity}) => {
                             <h2 className='text-white'>$ {price}</h2>
                         </Col>
                         <Col md={2} className='d-flex justify-content-center align-items-center'>
-                            <div className={rarity == 'Comum' ? "bg-primary" : 'bg-success'}>
+                            {/* Formatação de caixa condicional, se a Hq tiver a raridade Comum ou não */}
+                            <div className={rarity == 'Comum' ? 'bg-primary' : 'bg-success'}>
                                 <h3 className='p-2 text-center text-white'>{rarity}</h3>
                             </div>
                         </Col>
@@ -57,7 +61,7 @@ const CartItem = ({id, image, title, description, price, rarity}) => {
                 </Modal.Header>
                 <Modal.Body>{description}</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" onClick={handleClose}>
+                    <Button variant='danger' onClick={handleClose}>
                         Fechar
                     </Button>
                 </Modal.Footer>
