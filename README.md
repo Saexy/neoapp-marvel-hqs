@@ -5,6 +5,10 @@ No site não é listada todas as HQs, pois a Marvel limita o uso da API.
 O design do site foi pensado baseado nos quadrinhos e da paleta de cores da marvel, tendo um logo fundido, da NeoApp e da Marvel.
 A plataforma possui um sistema de carrinho de compras, e nele, poderá adicionar ou remover itens. Podendo também finalizar a compra, tendo a possibilidade de inserir um cupom de desconto, ou continuar comprando na página inicial.
 
+CUPONS DISPONÍVEIS:
+- CUPOMRARO15 - 15% de desconto em itens da raridade Raro
+- CUPOMCOMUM10 - 10% de desconto em itens da raridade Comum
+
 ## Construção do site
 
 O site inteiro foi feito com a biblioteca React Js, feita pelo Facebook, e na parte do design do site usei o Bootstrap, React-Bootstrap e o css puro.
