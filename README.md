@@ -1,6 +1,6 @@
 # Projeto NeoApp x Marvel
 
-O projeto NeoApp x Marvel consiste-se em um site que lista HQs da Marvel, sendo consumidas através da API da [Marvel](https://developer.marvel.com/).
+O projeto NeoApp x Marvel consiste em um site que lista HQs da Marvel, sendo consumidas através da API da [Marvel](https://developer.marvel.com/).
 No site não é listada todas as HQs, pois a Marvel limita o uso da API.
 O design do site foi pensado baseado nos quadrinhos e da paleta de cores da marvel, tendo um logo fundido, da NeoApp e da Marvel.
 A plataforma possui um sistema de carrinho de compras, e nele, poderá adicionar ou remover itens. Podendo também finalizar a compra, tendo a possibilidade de inserir um cupom de desconto, ou continuar comprando na página inicial.
