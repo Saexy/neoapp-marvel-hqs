@@ -7,12 +7,16 @@ import CartItem from './CartItem'
 
 import './CartItems.css'
 
-const CartItems = () => {
+const CartItems = ({ discountCoupons }) => {
 
     const data = JSON.parse(localStorage.getItem("cart"))
 
-    let [priceCommon, setPriceCommon] = useState(0.00)
-    let [priceRare, setPriceRare] = useState(0.00)
+    let [priceCommon] = useState(0.00)
+    let [priceRare] = useState(0.00)
+    let [discountCommon] = useState(0.00)
+    let [discountRare] = useState(0.00)
+
+    const [inputDiscount, setInputDiscount] = useState('') 
 
     const navigate = useNavigate()
 
@@ -47,6 +51,26 @@ const CartItems = () => {
         navigate(`/`)
     }
 
+    const verifyExistsCartItemRarity = () => {
+        const coupon = discountCoupons.filter(coupon => coupon.name.toUpperCase() == inputDiscount.toUpperCase())[0]
+
+        if(data.filter(cartitem => cartitem.rarity == coupon.rarity).length > 0) {
+
+            let totalValueCartItemsRarity = 0.00
+
+            data.filter(cartitem => cartitem.rarity == coupon.rarity).map(cartitem => totalValueCartItemsRarity += cartitem.price)
+            
+            if(coupon.rarity == 'Comum'){
+                discountCommon = totalValueCartItemsRarity * (coupon.percentage / 100)
+            }else{
+                discountRare = totalValueCartItemsRarity * (coupon.percentage / 100)
+            }
+            return true
+        }else{
+            return false
+        }
+    }
+
     return (
         <>
             <Container className='cartitems-container'>
@@ -65,9 +89,39 @@ const CartItems = () => {
                         {listData}
                         <Col md={12} className='d-flex justify-content-center align-items-center'>
                             <Row>
+                                <Col md={12} className='d-flex justify-content-center mt-2'>
+                                    <h3 className='text-white'>Digite o cupom de disconto:</h3>
+                                    <input type="text" placeholder="Cupom..." onChange={event => {setInputDiscount(event.target.value)}}/>
+                                    
+                                </Col>
+                                <Col md={12} className='mt-2'>
+                                    {inputDiscount != '' &&
+                                        <>
+                                            {discountCoupons.filter(coupon => coupon.name.toUpperCase() == inputDiscount.toUpperCase()).length > 0 &&
+                                                <>
+                                                    {verifyExistsCartItemRarity() == true &&
+                                                        <h4 className='text-center text-success'>Cupom aplicado!</h4>
+                                                    }
+                                                    {verifyExistsCartItemRarity() == false &&
+                                                        <h4 className='text-center text-danger'>Não há nenhum item inserido no carrinho que tenha a mesma raridade que o cupom inserido.</h4>
+                                                    }
+                                                </>
+                                            }
+                                            {discountCoupons.filter(coupon => coupon.name.toUpperCase() == inputDiscount.toUpperCase()).length <= 0 &&
+                                                <h4 className='text-center text-danger'>Não há nenhum cupom de disconto com este nome.</h4>
+                                            }  
+                                        </>
+                                    }
+                                </Col>
                                 <Col md={12} className='mt-2'>
                                     <h3 className='text-white text-center'>Preço Total: $ {priceCommon + priceRare}</h3>
-                                    <h3 className='text-white text-center'>Preço Final: $ {priceCommon + priceRare}</h3>
+                                    {discountRare > 0.00 &&
+                                        <h3 className='text-white text-center'>Desconto aplicado (Raro): $ {discountRare.toFixed(2)}</h3>
+                                    }
+                                    {discountCommon > 0.00 &&
+                                        <h3 className='text-white text-center'>Desconto aplicado (Comum): $ {discountCommon.toFixed(2)}</h3>
+                                    }
+                                    <h3 className='text-white text-center'>Preço Final: $ {((priceCommon + priceRare) - (discountCommon + discountRare)).toFixed(2)}</h3>
                                 </Col>
                                 <Col md={12} className='mt-3 d-flex justify-content-center align-items-center'>
                                     <Button variant="primary" className='m-3' onClick={() => (handleContinuePurchase())}>
@@ -81,7 +135,6 @@ const CartItems = () => {
                         </Col>
                     </Row>
                 }
-                
             </Container>
         </>
     )

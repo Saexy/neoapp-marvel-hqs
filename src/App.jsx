@@ -73,7 +73,7 @@ const App = () => {
                                     }
                                     {!loading &&
                                         <>
-                                           <Col md={12} className='d-flex justify-content-center'>
+                                            <Col md={12} className='d-flex justify-content-center'>
                                                 <h3 className='text-white'>Digite a HQ desejada:</h3>
                                                 <input type="text" placeholder="Procure..." onChange={event => {setInputSearch(event.target.value)}}/>
                                             </Col>
