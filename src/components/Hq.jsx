@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import './Hq.css'
 
-const Hq = ({image, title, description}) => {
+const Hq = ({image, title, description, price, rarity}) => {
 
     const [show, setShow] = useState(false)
 
@@ -15,21 +15,23 @@ const Hq = ({image, title, description}) => {
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
-    const handleCartItemAddition = (title, description, image) => {
+    const handleCartItemAddition = (title, description, image, price, rarity) => {
         const data = JSON.parse(localStorage.getItem("cart"))
         const newCart = JSON.stringify([...data, {
             id: uuidv4(),
             title: title,
             description: description,
             image: image,
+            price: price,
+            rarity: rarity,
         }])
     
         localStorage.setItem("cart", newCart)
     }
 
-    const handleClickAddition = (title, description, image) =>{
+    const handleClickAddition = (title, description, image, price, rarity) =>{
         handleClose()
-        handleCartItemAddition(title, description, image)
+        handleCartItemAddition(title, description, image, price, rarity)
         
         navigate(`/cart`)
     }
@@ -41,6 +43,12 @@ const Hq = ({image, title, description}) => {
                 <Card.Img variant="top" src={image} />
                 <Card.Body>
                     <Card.Title className='text-white'>{title}</Card.Title>
+                    <Card.Text className='text-white'>
+                        <h3>$ {price}</h3>
+                        <div className={rarity == 'Comum' ? "bg-primary" : 'bg-success'}>
+                            <h3 className='p-2 text-center'>{rarity}</h3>
+                        </div> 
+                    </Card.Text>
                     <Button className="hq-button" onClick={() => (handleShow())}>Visualizar</Button>
                 </Card.Body>
             </div>
@@ -55,7 +63,7 @@ const Hq = ({image, title, description}) => {
             <Button variant="danger" onClick={handleClose}>
                 Voltar
             </Button>
-            <Button variant="success" onClick={() => (handleClickAddition(title, description, image))}>
+            <Button variant="success" onClick={() => (handleClickAddition(title, description, image, price, rarity))}>
                 Adicionar ao carrinho
             </Button>
             </Modal.Footer>
